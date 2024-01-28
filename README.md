@@ -30,6 +30,13 @@ Make sure save both files in the same directory on your local machine.
 - Merge tiles of the same number to reach 2048.
 - The game ends when you reach 2048 or when there are no more moves left.
 
+### How the score calculated?
+- Once you merge two tiles, the score will increase corresponding number.
+```
+merged_value = grid[i][j] * 2
+score += merged_value
+```
+
 ## Enjoy the Game!
 
 ## Maintainer
