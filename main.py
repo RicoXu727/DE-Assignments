@@ -1,13 +1,15 @@
-# the main file where you run all the codes and 
+# The main file where you run all the codes and 
 # will import all functions from the second file
 
 import functions as f
+from functions import score
 
 def main():
+    # initialize_grid
     grid = f.initialize_grid()
     print("Welcome to 2048!")
     f.print_grid(grid)
-
+    # exception handling
     while True:
         try:
             move = input("Enter move (w: up, s: down, a: left, d: right, q: quit): ").strip().lower()
@@ -24,19 +26,18 @@ def main():
 
         except ValueError as e:
             print(e)
-        
         else:
             if new_grid != grid:
                 grid = new_grid
                 f.add_new_tile(grid)
                 f.print_grid(grid)
                 # reached 2048
-                if f.find_max_tile(grid) == 2048:
-                    print("Congratulations, you've reached 2048!")
+                if f.find_max_number(grid) == 2048:
+                    print("Congratulations, you've reached 2048! Your score is " + str(score))
                     break
                 # can not move since can not merge after compress
                 if not f.can_move(grid):
-                    print("No more moves available. Game over!")
+                    print("No more moves available. Game over! Your score is " + str(score))
                     # add try again logic
                     while True:
                         move = input("Try again? Yes - Y, No - N: ").strip().lower()
